@@ -98,7 +98,7 @@ def score_breakdown(m: MarketInputs) -> dict:
         elif ey >= 4.5:    c =  +0.3
         elif ey >= 3.5:    c =  -0.3
         else:              c =  -1.0   # expensive / low yield
-        parts["earnings_yield_pct"] = {"value": ey, "contrib": c}
+        parts["earnings_yield_pct"] = {"value": round(ey, 2), "contrib": c}
         total += c
 
     # # --- Valuation: Forward P/E (used only if EY missing) ---
@@ -114,7 +114,7 @@ def score_breakdown(m: MarketInputs) -> dict:
     # --- Trend (S&P vs 200d, %) ---
     if m.spx_vs_200d_pct is not None:
         c = 0.5 if m.spx_vs_200d_pct >= 0 else -0.5
-        parts["spx_vs_200d_pct"] = {"value": float(m.spx_vs_200d_pct), "contrib": c}
+        parts["spx_vs_200d_pct"] = {"value": round(m.spx_vs_200d_pct, 2), "contrib": c}
         total += c
 
     # --- Yield curve (10y-3m, bps) ---
@@ -123,7 +123,7 @@ def score_breakdown(m: MarketInputs) -> dict:
         if yc < 0:         c = -0.5
         elif yc < 50:      c = -0.1
         else:              c = +0.2
-        parts["yc_10y_3m_bps"] = {"value": yc, "contrib": c}
+        parts["yc_10y_3m_bps"] = {"value": round(yc, 2), "contrib": c}
         total += c
 
     # --- VIX level ---
@@ -132,7 +132,7 @@ def score_breakdown(m: MarketInputs) -> dict:
         if vx < 15:        c = +0.25
         elif vx > 25:      c = -0.5
         else:              c =  0.0
-        parts["vix_level"] = {"value": vx, "contrib": c}
+        parts["vix_level"] = {"value": round(vx, 2), "contrib": c}
         total += c
 
     # --- HY OAS (bps) ---
@@ -141,7 +141,7 @@ def score_breakdown(m: MarketInputs) -> dict:
         if hy < 350:       c = +0.25
         elif hy > 500:     c = -0.5
         else:              c =  0.0
-        parts["hy_oas_bps"] = {"value": hy, "contrib": c}
+        parts["hy_oas_bps"] = {"value": round(hy, 2), "contrib": c}
         total += c
 
     # --- Unemployment Δ 6m (pp) ---
@@ -150,7 +150,7 @@ def score_breakdown(m: MarketInputs) -> dict:
         if du <= -0.2:     c = +0.25
         elif du >=  0.2:   c = -0.25
         else:              c =  0.0
-        parts["unemp_6m_change_pp"] = {"value": du, "contrib": c}
+        parts["unemp_6m_change_pp"] = {"value": round(du, 2), "contrib": c}
         total += c
 
     parts["total_score"] = total
