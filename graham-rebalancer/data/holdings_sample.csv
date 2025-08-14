@@ -1,0 +1,15 @@
+﻿asset_class,ticker,quantity,price
+Stock,JPM,3,293.97
+Stock,AVGO,0.3274,305.35
+Stock,KO,6,72.5
+Stock, LLY,0.3021,661.9
+Stock, META,0.3063,770.36
+Stock, MO,7,56
+Stock, O,4,56.69
+Stock, PG,3,158.3
+Stock, XLU,8,86.22
+Bond, IGIB,11,53.44
+Bond, SGOV,6,100.43
+Bond, USHY,6,37.28
+Bond, VTIP,4,50.26
+Cash,CASH,1,346.59
